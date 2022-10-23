@@ -18,7 +18,6 @@
       pip: 
         name: pip
         state: latest
-        extra_args: --upgrade
     - name: Install docker
       yum:
         name: docker

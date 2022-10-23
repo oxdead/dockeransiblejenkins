@@ -34,15 +34,15 @@ pipeline {
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
                     sh 'docker login -u oistri -p ${dockerHubPwd}'
                 }
-                sh 'docker push oistri/hariapp:0.0.1'
+                sh "docker push oistri/hariapp:${DOCKER_TAG} "
             }   
         }
 
-        //stage('Docker Deploy'){
-        //    steps{
-        //      ansiblePlaybook credentialsId: 'dev-server', disableHostKeyChecking: true, extras: "-e DOCKER_TAG=${DOCKER_TAG}", installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
-        //    }
-        //}
+        stage('Docker Deploy'){
+            steps{
+              ansiblePlaybook credentialsId: 'dev-server', disableHostKeyChecking: true, extras: '-e DOCKER_TAG="$DOCKER_TAG"', installation: 'ansible', inventory: 'dev.inv', playbook: 'deploy-docker.yml'
+            }
+        }
 
     }
 }

@@ -2,7 +2,7 @@
 - hosts: dev
   become: True
   tasks:
-     - name: yum update
+    - name: yum update
       yum:
         name: "*"
         state: latest

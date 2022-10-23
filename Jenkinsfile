@@ -25,7 +25,6 @@ pipeline {
         
         stage('Docker Build') {
              steps {
-                sh 'docker build . -t oistri/hariapp:0.0.1'
                 sh "docker build . -t oistri/hariapp:${DOCKER_TAG} "
             }   
         }

@@ -1,2 +1,2 @@
 [dev]
-108.61.103.220 ansible_user=root
+108.61.103.220 ansible_user=root ansible_python_interpreter=/usr/bin/python3

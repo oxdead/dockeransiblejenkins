@@ -10,6 +10,7 @@
       pip: 
         name: pip
         state: latest
+        extra_args: --upgrade
     - name: Enable EPEL Repository on CentOS 7
       yum:
         name: epel-release

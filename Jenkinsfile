@@ -12,7 +12,7 @@ pipeline {
     stages { 
         stage('SCM') {
             steps {
-                git 'https://github.com/javahometech/dockeransiblejenkins.git'
+                git 'https://github.com/oxdead/dockeransiblejenkins.git'
             }
             
         }

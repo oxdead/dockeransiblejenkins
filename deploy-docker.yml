@@ -2,9 +2,13 @@
 - hosts: dev
   become: True
   tasks:
-    - name: Install python pip
+    - name: Enable EPEL Repository on CentOS 7
       yum:
-        name: python-pip
+        name: epel-release
+        state: latest
+      - name: Install python3-pip
+      yum:
+        name: python3-pip
         state: present
     - name: Install docker
       yum:
@@ -19,6 +23,8 @@
       pip:
         name: docker-py
         state: present
+        extra_args: --upgrade
+        executable: pip3
     - name: Start the container
       docker_container:
         name: hariapp

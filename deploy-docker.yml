@@ -39,5 +39,6 @@
         name: hariapp
         image: "oistri/hariapp:{{DOCKER_TAG}}"
         state: started
+        executable: pip3
         published_ports:
           - 0.0.0.0:8080:8080

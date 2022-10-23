@@ -10,9 +10,9 @@
       yum:
         name: epel-release
         state: latest
-    - name: Install python3-pip
+    - name: Install python-pip
       yum:
-        name: python3-pip
+        name: python-pip
         state: present
     - name: Install docker
       yum:
@@ -23,12 +23,12 @@
         name: docker
         state: started
         enabled: yes
-    - name: Install docker-py python module
+    - name: Install docker python module
       pip:
-        name: docker-py
+        name: docker
         state: present
         extra_args: --upgrade
-        executable: pip3
+        executable: pip
     - name: Start the container
       docker_container:
         name: hariapp

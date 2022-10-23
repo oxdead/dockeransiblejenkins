@@ -5,9 +5,9 @@ pipeline {
     }
     
     
-    //environment {
-    //    DOCKER_TAG = getVersion()
-    //}
+    environment {
+        DOCKER_TAG = getVersion()
+    }
     
     stages { 
         stage('SCM') {
@@ -26,6 +26,7 @@ pipeline {
         stage('Docker Build') {
              steps {
                 sh 'docker build . -t oistri/hariapp:0.0.1'
+                sh "docker build . -t oistri/hariapp:${DOCKER_TAG} "
             }   
         }
         
@@ -47,7 +48,7 @@ pipeline {
     }
 }
 
-// def getVersion() {
-//    def commitHash = sh label: '', returnStdout: true, script: 'git rev-parse --short HEAD'
-//    return commitHash
-// }
+def getVersion() {
+    def commitHash = sh label: '', returnStdout: true, script: 'git rev-parse --short HEAD'
+    return commitHash
+}

@@ -12,13 +12,13 @@
         state: latest
     - name: Install python-pip
       yum:
-        name: python3-pip
+        name: python-pip
         state: present
     - name: install the latest pip package
       pip: 
         name: pip
         state: latest
-        executable: pip3
+        executable: pip
     - name: Install docker
       yum:
         name: docker
@@ -32,13 +32,10 @@
       pip:
         name: docker
         state: present
-        extra_args: --upgrade
-        executable: pip3
     - name: Start the container
       docker_container:
         name: hariapp
         image: "oistri/hariapp:{{DOCKER_TAG}}"
         state: started
-        executable: pip3
         published_ports:
           - 0.0.0.0:8080:8080

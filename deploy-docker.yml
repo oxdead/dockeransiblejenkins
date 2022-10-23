@@ -6,6 +6,10 @@
       yum:
         name: "*"
         state: latest
+    - name: install the latest pip package
+      pip: 
+        name: pip
+        state: latest
     - name: Enable EPEL Repository on CentOS 7
       yum:
         name: epel-release
